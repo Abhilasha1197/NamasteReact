@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NamsteReact</title>
+    <link href="./index.css" rel="stylesheet" />
+  </head>
+  <body>
+    <!--<h1>On top of root</h1>-->
+    <div id="root">
+      <!--- <h1>I'm abhilasha</h1>-->
+    </div>
+    <!--<h1>below the root</h1>-->
+    <!--  everything outside of root will act as normal html. we can see that h1 tag inside div is here so 1st h1 tag will be 
+       render then once CDN links will be loaded and app.js is inserted then root.render will replace h1 tag and react elemnts
+     will be rendered. this will happen very fast as react is fast.--->
+
+    <!---<script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script> -->
+    <!---react cdn  link-->
+    <!--<script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script> -->
+    <!---cdn link-->
+
+    <script type="module" src="./src/App.js"></script>
+  </body>
+</html>
+
+<!--this is the way of injecting react in our html file. react is library so we can use react even in a small section of website like header,footer,navbar etc. just make that section as root 
+with help of ReactDOM.createRoot and render whatever u want inside the root. For injecting react in oour html we can insert react CDN scripts inside our html file. -->
