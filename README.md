@@ -1,4 +1,3 @@
-
 #parcel ===>
 dev build ,
 local server,
@@ -16,9 +15,6 @@ https,
 tree shaking- remove unused code,
 different dev and production bundles
 
-
-
-
 <!------------Rough----------------
 
  * <div id='parent'
@@ -31,10 +27,10 @@ different dev and production bundles
  *        <h2>I'm h2 tag</h2>
  *     </div>
  * </div>
- * 
- * 
+ *
+ *
  *  reactElement is {Object}  => HTML(browser understands)
- * 
+ *
 
 
   const parent = React.createElement("div", {id:"parent"},
@@ -102,20 +98,20 @@ const headingElement2 = (
    <p className="head">
       NamasteReact element or a piece of JSX<br/>
       {headingElement1}
-      
+
    </p>
 );
 
 
 
-//React component :- creating components helps us in 
+//React component :- creating components helps us in
 1. making code reusable, moduler,maintainable,testable,readable
 //class based
 //function based
 
 
-function based component is normal js function 
-which return a piece of jsx or react elemnt 
+function based component is normal js function
+which return a piece of jsx or react elemnt
 
 
 const Headingcomp2 = ()=> (
@@ -128,7 +124,7 @@ const Headingcomp3 = function(){
    return (
    <p className="head">
       NamasteReact functional component using fuction keyword;
-      
+
    </p>
 )};
 
@@ -155,19 +151,19 @@ root.render(<Headingcomponent />)
  * HEADER
  * -logo
  * -Nav links
- * 
+ *
  * BODY
  * -search food
  * -restaurantCardContainer ->cards
- * 
+ *
  * FOOTER
  * -copyrights
  * -important links
  * -contacts
  * -address
  */
-
-
+In Map:-
+  //not using id is not acceptable ,better you use index as key but the best is to use unique id as key.
 
 Two types of Export/Import
 
@@ -211,15 +207,15 @@ useState() - local State variable in functional component=> whenever a statevari
 
  Two types of routing : -
 1. client side routing ---changing the route on web page
-2. server side routing ---changing the route by changing the url 
+2. server side routing ---changing the route by changing the url
 
 Anchor tag-reloads
 Link tags-does not reload
 
+
+/*------------//chunking//on demand loading//code splitting //lazy loading // dynamic bundling //dynamic import--------*/
+when there' are very big components ,or heavy components then you don't load it initailly but only loads when on demand. so you split the bundlers for those heavy components in chunks=>check network call.initially the only bundle for that component is loaded which you click but when you click on other heavy component, bundle for that is also loaded. this is acheived by lazy loading. loading the component on demand.
+
 ---->
 
-
-
-
-
-To start=> npm start or parcel index.html
+To start=> npm start or npx parcel index.html

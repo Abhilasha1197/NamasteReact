@@ -1,5 +1,4 @@
 import React from "react";
-import { json } from "stream/consumers";
 
 class Profile extends React.Component {
   //constructor is for initialising the variable

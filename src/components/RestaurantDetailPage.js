@@ -2,6 +2,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { CDNN_URL } from "../utils/constants";
+import { API_URL_MENU } from "../utils/constants";
 
 const RestaurantDetailPage = () => {
   //useParam hooks reads the dyamic url
@@ -15,9 +16,7 @@ const RestaurantDetailPage = () => {
   }, []);
 
   async function getRestaurantDetailPage() {
-    const data = await fetch(
-      `https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=26.7605545&lng=83.3731675&restaurantId=${id}`
-    );
+    const data = await fetch(API_URL_MENU + id);
     const json = await data.json();
     console.log(json);
 
@@ -52,7 +51,6 @@ const RestaurantDetailPage = () => {
       <div className="offer-section">
         <h1>0ffers</h1>
         <div className="offers-container">
-          {" "}
           {Object.values(offers).map((offer) => (
             <div key={offer.info.offerIds} className="offer">
               <p>{offer.info.header}</p>
