@@ -8,10 +8,15 @@ import About from "./pages/About";
 import NotFoundPage from "./pages/NotFoundPage";
 import RestaurantDetailPage from "./components/RestaurantDetailPage";
 import Profile from "./components/Profile";
-import { lazy, Suspense } from "react";
+import { lazy, Suspense, useState } from "react";
+import userContext from "./utils/userContext";
+import { Provider } from "react-redux";
+import store from "./utils/store";
 
 //import Instamart from "./pages/Instamart";
 
+const Instamart = lazy(() => import("./pages/Instamart"));
+// when on demand loading=> on render=>react suspend loading.1
 //chunking
 //on demand loading
 //code splitting
@@ -19,15 +24,22 @@ import { lazy, Suspense } from "react";
 // dynamic bundling
 //dynamic import
 
-const Instamart = lazy(() => import("./pages/Instamart"));
-// when on demand loading=> on render=>react suspend loading.
+
 
 const AppLayout = () => {
+  const [userr, setUserr] = useState({
+    name: "Abhilasha Tiwari",
+    email: "abhilasha15597@gmail.com",
+  });
   return (
     <div className="app">
-      <Header />
-      <Outlet />
+      <Provider store={store}>
+      <userContext.Provider value={{ user: userr }}>
+        <Header />
+        <Outlet />
+      </userContext.Provider>
       <Footer />
+      </Provider>
     </div>
   );
 };
@@ -54,7 +66,9 @@ const appRouter = createBrowserRouter([
       },
       {
         path: "/",
-        element: <Body />,
+        element: (
+          <Body user={{ name: "abhi", roll: "116", address: "india" }} />
+        ),
       },
       {
         path: "/restaurant/:id",

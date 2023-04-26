@@ -3,13 +3,26 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { CDNN_URL } from "../utils/constants";
 import { API_URL_MENU } from "../utils/constants";
+import { useDispatch } from "react-redux";
+import { addOffer } from "../utils/offerSlice";
+import { addItem } from "../utils/cartSlice";
 
 const RestaurantDetailPage = () => {
   //useParam hooks reads the dyamic url
   const { id } = useParams(); //destructuring
   const [restauratDetail, setRestaurantDetail] = useState({});
   const [offers, setOffers] = useState({});
-  const [menu, setMenu] = useState({});
+  const [menu, setMenu] = useState([]);
+
+const dispatch = useDispatch();
+
+  const handleOffer = (offer) =>{
+    dispatch(addOffer(offer))
+  }
+  
+  const handleCart =(name)=>{
+    dispatch(addItem(name))
+  }
 
   useEffect(() => {
     getRestaurantDetailPage();
@@ -22,7 +35,7 @@ const RestaurantDetailPage = () => {
 
     setRestaurantDetail(json.data?.cards[0].card?.card?.info);
     setMenu(
-      json.data?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1].card
+      json.data?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card
         ?.card?.itemCards
     );
     setOffers(
@@ -34,7 +47,7 @@ const RestaurantDetailPage = () => {
     <div className="restaurant-detail-page">
       <div className="restaurant">
         <div className="restaurant-description">
-          <h1>{restauratDetail?.name}</h1>
+          <h1>{restauratDetail?.name} <button onClick={()=>handleCart(restauratDetail)}>🛒</button></h1> 
           <p>
             {restauratDetail?.areaName}, {restauratDetail.city}
           </p>
@@ -51,8 +64,11 @@ const RestaurantDetailPage = () => {
       <div className="offer-section">
         <h1>0ffers</h1>
         <div className="offers-container">
+
           {Object.values(offers).map((offer) => (
             <div key={offer.info.offerIds} className="offer">
+             
+              <button onClick={()=>handleOffer(offer)}>➕</button>
               <p>{offer.info.header}</p>
               <p>{offer.info.couponCode}</p>
               <p>{offer.info.description}</p>
@@ -62,18 +78,19 @@ const RestaurantDetailPage = () => {
         </div>
       </div>
       <hr />
+{/*
       <div className="restaurant-menu-section">
         <h1>Menu</h1>
-        <ul className="menu">
-          {Object.values(menu).map((item) => (
-            <li key={item.card.info.id}>
-              {item.card.info.name}
-              <br />
-              Rs.{item.card.info.price / 100}
-            </li>
+        <div className="menu-container">
+          {menu.map((item) => (
+            <div key={item.card.info.id} className="menu-item">
+              <p>{item.card.info.name}</p>
+              <p> Rs.{item.card.info.price / 100}</p>
+            </div>
           ))}
-        </ul>
+        </div>
       </div>
+          */}
     </div>
   );
 };

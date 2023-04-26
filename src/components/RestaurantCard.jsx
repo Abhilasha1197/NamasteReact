@@ -3,6 +3,8 @@ import { CDNN_URL } from "../utils/constants";
 import { useState, useEffect } from "react";
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 
+
+
 const RestaurantCard = ({
   name,
   cloudinaryImageId,
@@ -10,8 +12,12 @@ const RestaurantCard = ({
   costForTwo,
   avgRating,
   maxDeliveryTime,
+ 
 }) => {
   const [isLoading, setIsLoading] = useState(true);
+
+
+  
 
   useEffect(() => {
     setTimeout(() => {
@@ -37,6 +43,7 @@ const RestaurantCard = ({
               <h4>Rs.{costForTwo / 100}</h4>
               <h4>{avgRating} ⭐</h4>
               <h4>{maxDeliveryTime} min</h4>
+            
             </div>
           </div>
         </div>

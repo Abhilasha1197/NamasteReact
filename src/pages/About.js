@@ -2,6 +2,7 @@ import React from "react";
 import { Outlet } from "react-router-dom";
 import Profile from "../components/ProfileClassBased";
 import ProfileFunctionalComp from "../components/Profile.jsx";
+import userContext from "../utils/userContext";
 
 class About extends React.Component {
   constructor(props) {
@@ -19,7 +20,14 @@ class About extends React.Component {
       <div>
         <h1>This is about page!</h1>
         <ProfileFunctionalComp name="First child" />
-        //
+
+        <userContext.Consumer>
+          {({ user }) => (
+            <h4>
+              {user.name}-{user.email}
+            </h4>
+          )}
+        </userContext.Consumer>
       </div>
     );
   }

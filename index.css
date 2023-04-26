@@ -167,14 +167,14 @@ simmer-box {
   text-align: center;
 }
 
-.menu {
+.menu-container {
   display: flex;
   align-items: center;
   justify-content: space-around;
   flex-wrap: wrap;
 }
 
-.menu li {
+.menu-item {
   margin: 20px;
   font-weight: 500;
   padding: 20px;
@@ -184,6 +184,6 @@ simmer-box {
   border-radius: 12px;
 }
 
-.menu li:hover {
+.menu-item:hover {
   background-color: brown;
 }

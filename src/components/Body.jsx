@@ -5,7 +5,8 @@ import { filterData } from "../utils/Helper";
 import { API_URL_SWIGGY } from "../utils/constants";
 import useOnline from "../utils/customHooks/useOnline";
 
-function Body() {
+function Body(props) {
+  const userr = props.user;
   const [allRestaurantList, setAllRestaurantList] = useState([]);
   const [filteredRestauratsList, setFilteredRestaurantList] = useState([]);
   const [searchrestaurant, setSearchRestaurant] = useState("");
@@ -67,13 +68,16 @@ function Body() {
       </div>
       <div className="res-container">
         {filteredRestauratsList.map((restaurant) => {
+
           return (
+          
             <Link
               to={"/restaurant/" + restaurant.data.id}
               key={restaurant.data.id}
               style={{ textDecoration: "none" }}
             >
               <RestaurantCard {...restaurant.data} />
+
             </Link>
           );
         })}
