@@ -68,16 +68,13 @@ function Body(props) {
       </div>
       <div className="res-container">
         {filteredRestauratsList.map((restaurant) => {
-
           return (
-          
             <Link
               to={"/restaurant/" + restaurant.data.id}
               key={restaurant.data.id}
               style={{ textDecoration: "none" }}
             >
               <RestaurantCard {...restaurant.data} />
-
             </Link>
           );
         })}

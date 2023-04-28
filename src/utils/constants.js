@@ -10,6 +10,8 @@ export const API_URL_SWIGGY =
 export const API_URL_MENU =
   "https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=26.7605545&lng=83.3731675&restaurantId=";
 
+  export const MENU = "https://www.swiggy.com/mapi/homepage/getCards?lat=26.7605545&lng=83.3731675&restaurantId="
+
 /*
 export const resList = 
 {

@@ -12,6 +12,8 @@ import { lazy, Suspense, useState } from "react";
 import userContext from "./utils/userContext";
 import { Provider } from "react-redux";
 import store from "./utils/store";
+import Cart from "./pages/Cart";
+  
 
 //import Instamart from "./pages/Instamart";
 
@@ -82,6 +84,11 @@ const appRouter = createBrowserRouter([
           </Suspense>
         ),
       },
+      {
+        path: "/cart",
+        element: <Cart/>,
+      },
+      
     ],
   },
 ]);

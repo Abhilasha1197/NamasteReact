@@ -187,3 +187,10 @@ simmer-box {
 .menu-item:hover {
   background-color: brown;
 }
+
+.cart-items{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  flex-direction: row;
+}

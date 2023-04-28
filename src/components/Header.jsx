@@ -10,13 +10,15 @@ import { useSelector } from "react-redux";
 
 const Header = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  
   const isOnline = useOnline();
+
   const { user } = useContext(userContext);
 
-  const offerItem = useSelector(store => store.offers.offerItems);
+ 
   const cartItem = useSelector(store=>store.cart.items)
   console.log(cartItem);
-  console.log(offerItem);
+ // console.log(offerItem);
   return (
     <div className="header">
       <Link to="/">
@@ -41,9 +43,7 @@ const Header = () => {
             <li>Cart {cartItem.length}</li>
           </Link>
 
-          <Link to="/offers" style={{ textDecoration: "none" }}>
-            <li>Offers {offerItem.length}</li>
-          </Link>
+          
          
 
         </ul>
